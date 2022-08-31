@@ -1,0 +1,50 @@
+<!-- Displaying the Title and required buttons -->
+<header>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <div class="nine">
+        <h1>SHOP FOR HOME <span>Transform your space</span></h1>
+       
+      </div>
+      <!-- <div style="margin-left: 13cm; position: relative; margin-top: 2.8cm;">
+        <img
+        src="https://media.istockphoto.com/photos/shopping-online-concept-parcel-or-paper-cartons-with-a-shopping-cart-picture-id1249219777?k=20&m=1249219777&s=170667a&w=0&h=yXvnoE69Nowry1Pufqlcwz-p11pwflGou7p8DUmQruM="
+        alt="Flowers in Chania" width="250" height="200">
+      </div> -->
+      
+     
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      
+      <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)"
+        placeholder="Search for products, brands and more">
+      <button class="btn btn-secondary" *ngIf="service.AdminloggedIn()=='admin'" routerLink="admin">DASHBOARD</button>
+      <button class="btn btn-primary" routerLink="products">HOME <i style="color: white;" class="fa fa-home"
+          aria-hidden="true"></i></button>
+      <button class="btn btn-info" *ngIf="!(service.loggedIn())" routerLink="userregister">USER</button>
+
+      <button class="btn btn-info" *ngIf="!(service.loggedIn())" routerLink="adminsignup" color="warn">ADMIN <i
+          class="fa fa-lock" aria-hidden="true" style="font-size: large;"></i></button>
+      <button class="btn btn-primary" *ngIf="service.AdminloggedIn()=='admin'" routerLink="/users">USERS</button>
+      <button class="btn btn-primary" *ngIf="service.AdminloggedIn()=='admin'" routerLink="/adddiscounts">DISCOUNTS</button>
+      <button class="btn btn-primary" *ngIf="service.AdminloggedIn()=='admin'" routerLink="/ecommerce">ADD
+        PRODUCTS</button><br />
+        <button class="btn btn-primary" *ngIf="service.AdminloggedIn()=='admin'" routerLink="/adddiscounts123">SALES REPORT</button><br />
+       
+      <button class="btn btn-primary" *ngIf="service.AdminloggedIn()=='user'" routerLink="/discount">MY OFFERS</button>
+      <div>
+        <button mat-raised-button style="margin-right:20px" color="accent" *ngIf="service.AdminloggedIn()=='user'"
+          routerLink="cart" class="btn btn-primary">
+          <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+          <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+        </button>
+      </div>
+      <button mat-raised-button style="margin-right:20px" color="accent" *ngIf="service.AdminloggedIn()=='user'"
+        routerLink="wishlist" class="btn btn-primary"><i style="font-size: 30px;" class="fa fa-heart"></i>
+        <div style="font-size: 10px;" class="badge bg-danger">{{wishlistnumber}}</div>
+      </button>
+      <a class="btn btn-danger" id="logout" routerLink="" *ngIf="service.loggedIn()" (click)="service.logoutUser()"
+        color="warn">LOG OUT</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
